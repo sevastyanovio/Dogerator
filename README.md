@@ -1,5 +1,4 @@
 # Dogerator
-=========
 This is simple application for dogerate your avatar.
 
 ## License
