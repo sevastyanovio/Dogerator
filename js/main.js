@@ -4,6 +4,8 @@ var canvas = this.__canvas = new fabric.Canvas('canvas-area');
 var result_button = $('#result-btn')
 	.hide()
 	.on('click', function () {
+		canvas.discardActiveObject();
+
 		location.href = canvas.toDataURL('image/png');
 	});
 
