@@ -4,6 +4,8 @@ var canvas = this.__canvas = new fabric.Canvas('canvas-area');
 var result_button = $('#result-btn')
 	.hide()
 	.on('click', function () {
+		canvas.discardActiveObject();
+
 		location.href = canvas.toDataURL('image/png');
 	});
 
@@ -73,3 +75,19 @@ var imgur = {
 		return $.ajax({ method: method, url: url, data: data, dataType: 'json', headers: { Authorization: 'Client-ID ' + this._client_id } })
 	}
 };
+
+//random words generator
+
+function addItem() {
+	items = Array('such photo', 'wow', 'amaze', 'much doge', 'awesome', 'so cute', 'nice avatar', 'plz gav', 'gav gav', 'many likes', 'so beautiful', 'WOW');
+	docHeight = $(document).innerHeight();
+	docWidth = $(document).innerWidth()
+	text = items[Math.floor(Math.random() * items.length)];
+	textCol = '#' + Math.floor(Math.random() * 16777215).toString(16);
+	textSize = Math.floor((Math.random() * 48) + 12);
+	yPos = Math.floor((Math.random() * docHeight));
+	xPos = Math.floor((Math.random() * docWidth));
+	$('<div class="bubble" style="color:' + textCol + ';left:' + xPos + 'px;top:' + yPos + 'px;font-size:' + textSize + 'px;">' + text + '</div>').appendTo("body").fadeIn('fast').delay(2000).fadeOut('fast');
+	$('.bubble:not(:last-child)').remove();
+}
+setInterval(addItem, 2000); 
